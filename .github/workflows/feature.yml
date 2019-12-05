@@ -1,4 +1,4 @@
-name: 功能代码验证
+name: 功能代码
 
 on: [push, pull_request]
 
@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: 检查代码风格
+      - name: 检查代码功能
         run: |
           yarn install
           npm run test:ci
