@@ -1,0 +1,57 @@
+name: "科举认证 · 自动化考核"
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: 考点1-代码构建
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: 安装依赖
+        run: yarn install
+      - name: 检查代码构建
+        run: npm run build
+  lint:
+    name: 考点2-代码风格
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: 安装依赖
+        run: yarn install
+      - name: 检查代码风格
+        run: npm run lint
+  test:
+    name: 考点3-测试代码
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: 安装依赖
+        run: yarn install
+      - name: 验证测试代码
+        run: npm run test:test
+  feature:
+    name: 考点4-功能代码
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: 安装依赖
+        run: yarn install
+      - name: 验证功能代码
+        run: npm run test:ci

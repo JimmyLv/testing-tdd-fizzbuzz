@@ -4,10 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint src",
-    "lint:fix": "eslint src --fix",
-    "build": "babel src --out-dir dist",
     "test": "jest src",
+    "lint": "eslint src",
+    "build": "babel src --out-dir dist",
     "test:test": "jest test-specs",
     "test:ci": "npm test --coverage"
   },
