@@ -4,7 +4,11 @@
 
 ## 如何参加考试
 
-fork 本项目，完成代码后提交 PullRequests 即可，结果查询 👇
+fork 本项目，完成代码后提交 Pull Requests 即可。
+
+在线编辑器，快速入口：https://codesandbox.io/s/github/jiker-keju/tdd-fizzbuzz
+
+结果查询 👇
 
 ## 考试成绩
 
