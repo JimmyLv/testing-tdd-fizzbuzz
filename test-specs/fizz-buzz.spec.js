@@ -15,9 +15,18 @@ test("should return number string when given normal number", () => {
 
 test("should verify tests code should be verified", () => {
   expect(fizzBuzz).toBeCalled();
+  // 正向情况
   expect(fizzBuzz).toHaveBeenCalledWith(2);
+
+  // 反向情况
   expect(fizzBuzz).toHaveBeenCalledWith(3);
   expect(fizzBuzz).toHaveBeenCalledWith(5);
   expect(fizzBuzz).toHaveBeenCalledWith(15);
-  expect(fizzBuzz).toBeCalledTimes(4); // 4 个用例
+
+  // 异常情况
+  expect(fizzBuzz).toHaveBeenCalledWith('');
+  expect(fizzBuzz).toHaveBeenCalledWith(101);
+
+  expect(fizzBuzz).toBeCalledTimes(6); // 6 个用例
+  expect(fizzBuzz).toHaveReturnedTimes(4);
 });
