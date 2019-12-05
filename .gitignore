@@ -9,6 +9,7 @@
 # production
 /dist
 /.firebase
+/coverage
 
 # misc
 .DS_Store
