@@ -1,4 +1,4 @@
-import { fizzBuzz } from './index';
+import { fizzBuzz } from './fizz-buzz';
 
 test('should return number string when given normal number', () => {
   // given

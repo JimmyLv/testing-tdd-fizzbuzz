@@ -1,4 +1,4 @@
-name: 代码风格检查
+name: 代码构建检查
 
 on: [push, pull_request]
 

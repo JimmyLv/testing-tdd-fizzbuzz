@@ -1,4 +1,4 @@
-name: 代码风格检查
+name: 功能代码验证
 
 on: [push, pull_request]
 
@@ -18,6 +18,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: 检查代码风格
         run: |
-          echo 'all features accpeted.'
+          npm run test:ci
         env:
           CI: true
