@@ -28,6 +28,11 @@
       "jest": true
     },
     "rules": {
+      "quotes": "off",
+      "arrow-parens": [
+        "error",
+        "as-needed"
+      ],
       "import/prefer-default-export": "warn"
     }
   },

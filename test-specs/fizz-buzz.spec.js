@@ -10,29 +10,88 @@ if (module.default) {
   fizzBuzz = module.fizzBuzz;
 }
 
-test("should return number string when given normal number", () => {
-  // given
-  const number = 2;
-  // when
-  const result = fizzBuzz(number);
-  // then
-  expect(result).toBe("2");
+describe("FizzBuzz Tests", () => {
+  require("../src/fizz-buzz.test");
 });
 
-test("should verify tests code should be verified", () => {
-  expect(fizzBuzz).toBeCalled();
-  // 正向情况
-  expect(fizzBuzz).toHaveBeenCalledWith(2);
+expect.extend({
+  toHaveReturnedSome(results = [], callback) {
+    const pass = results.some(callback);
+    if (pass) {
+      return {
+        message: () => `expected to return some result for ${callback}`,
+        pass: true
+      };
+    } else {
+      return {
+        message: () => `expected to return no result for ${callback}`,
+        pass: false
+      };
+    }
+  },
+  toHaveBeenCalledWithSome(calls, callback) {
+    const pass = calls.some(args => args.some(callback));
+    if (pass) {
+      return {
+        message: () => `expected calls with some args for ${callback}`,
+        pass: true
+      };
+    } else {
+      return {
+        message: () => `expected no calls with some args for ${callback}`,
+        pass: false
+      };
+    }
+  }
+});
 
-  // 反向情况
-  expect(fizzBuzz).toHaveBeenCalledWith(3);
-  expect(fizzBuzz).toHaveBeenCalledWith(5);
-  expect(fizzBuzz).toHaveBeenCalledWith(15);
+describe("Tests for FizzBuzz specs", () => {
+  const divideBy = divisor => number => number % divisor === 0;
+  const isInScope = number => isNumber(number) && number >= 1 && number <= 100;
+  const isNotInScope = number =>
+    isNumber(number) && (number < 1 || number > 100);
+  const isDivisibleBy3 = number => divideBy(3)(number);
+  const isDivisibleBy5 = number => divideBy(5)(number);
+  const isEmptyInput = number => ["", null, undefined].includes(number);
+  const isNumber = number => typeof number === "number";
+  const isNotNumber = number => !isNumber(number);
 
-  // 异常情况
-  expect(fizzBuzz).toHaveBeenCalledWith("");
-  expect(fizzBuzz).toHaveBeenCalledWith(101);
+  test("should verify normal number cases have been covered", () => {
+    // 正向情况
+    expect(fizzBuzz).toBeCalled();
+    expect(fizzBuzz.mock.calls).toHaveBeenCalledWithSome(isInScope);
+    expect(fizzBuzz.mock.calls).toHaveBeenCalledWithSome(
+      number =>
+        isInScope(number) && !isDivisibleBy3(number) && !isDivisibleBy5(number)
+    );
+  });
 
-  expect(fizzBuzz).toBeCalledTimes(6); // 6 个用例
-  expect(fizzBuzz).toHaveReturnedTimes(4);
+  test("should verify 'Fizz/Buzz' cases have been covered", () => {
+    // 反向情况
+    expect(fizzBuzz.mock.calls).toHaveBeenCalledWithSome(
+      number => isInScope(number) && isDivisibleBy3(number)
+    );
+    expect(fizzBuzz.mock.calls).toHaveBeenCalledWithSome(
+      number => isInScope(number) && isDivisibleBy5(number)
+    );
+    expect(fizzBuzz.mock.calls).toHaveBeenCalledWithSome(
+      number =>
+        isInScope(number) && isDivisibleBy3(number) && isDivisibleBy5(number)
+    );
+  });
+
+  test("should verify exception cases have been covered", () => {
+    console.log("mock calls and results", {
+      calls: fizzBuzz.mock.calls,
+      results: fizzBuzz.mock.results
+    });
+
+    // 异常情况
+    expect(fizzBuzz.mock.calls).toHaveBeenCalledWithSome(isNotInScope);
+    expect(fizzBuzz.mock.calls).toHaveBeenCalledWithSome(isNotNumber);
+    expect(fizzBuzz.mock.calls).toHaveBeenCalledWithSome(isEmptyInput);
+    expect(fizzBuzz.mock.results).toHaveReturnedSome(
+      result => result.type === "throw"
+    );
+  });
 });
