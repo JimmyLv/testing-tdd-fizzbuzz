@@ -1,8 +1,14 @@
 import * as module from "../src/fizz-buzz";
 
 // jest.mock('./fizz-buzz');
-jest.spyOn(module, 'fizzBuzz');
-const { fizzBuzz } = module;
+let fizzBuzz;
+if (module.default) {
+  jest.spyOn(module, "default");
+  fizzBuzz = module.default;
+} else {
+  jest.spyOn(module, "fizzBuzz");
+  fizzBuzz = module.fizzBuzz;
+}
 
 test("should return number string when given normal number", () => {
   // given
@@ -24,7 +30,7 @@ test("should verify tests code should be verified", () => {
   expect(fizzBuzz).toHaveBeenCalledWith(15);
 
   // 异常情况
-  expect(fizzBuzz).toHaveBeenCalledWith('');
+  expect(fizzBuzz).toHaveBeenCalledWith("");
   expect(fizzBuzz).toHaveBeenCalledWith(101);
 
   expect(fizzBuzz).toBeCalledTimes(6); // 6 个用例
