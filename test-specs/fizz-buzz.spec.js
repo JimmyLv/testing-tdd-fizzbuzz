@@ -15,30 +15,30 @@ describe("FizzBuzz Tests", () => {
 });
 
 expect.extend({
-  toHaveReturnedSome(results = [], callback) {
-    const pass = results.some(callback);
+  toHaveReturnedSome(results = [], predicate) {
+    const pass = results.some(predicate);
     if (pass) {
       return {
-        message: () => `expected to return some result for ${callback}`,
+        message: () => `expected to return some result for ${predicate}`,
         pass: true
       };
     } else {
       return {
-        message: () => `expected to return no result for ${callback}`,
+        message: () => `expected to return no result for ${predicate}`,
         pass: false
       };
     }
   },
-  toHaveBeenCalledWithSome(calls, callback) {
-    const pass = calls.some(args => args.some(callback));
+  toHaveBeenCalledWithSome(calls, predicate) {
+    const pass = calls.some(args => args.some(predicate));
     if (pass) {
       return {
-        message: () => `expected calls with some args for ${callback}`,
+        message: () => `expected calls with some args for ${predicate}`,
         pass: true
       };
     } else {
       return {
-        message: () => `expected no calls with some args for ${callback}`,
+        message: () => `expected no calls with some args for ${predicate}`,
         pass: false
       };
     }
