@@ -12,7 +12,7 @@ const isAliquot5 = isAliquot(5);
 
 export default function fizzBuzz(number) {
   if (!isNumber(number)) {
-    throw new Error('number is type of number is not number');
+    throw new Error('type of number is not number');
   }
 
   if (isAliquot3(number) && isAliquot5(number)) {
