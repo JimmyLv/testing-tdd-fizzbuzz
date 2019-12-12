@@ -282,6 +282,14 @@
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-syntax-optional-catch-binding" "^7.7.4"
 
+"@babel/plugin-proposal-pipeline-operator@^7.7.4":
+  version "7.7.4"
+  resolved "https://registry.npm.taobao.org/@babel/plugin-proposal-pipeline-operator/download/@babel/plugin-proposal-pipeline-operator-7.7.4.tgz?cache=0&sync_timestamp=1574466515706&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fplugin-proposal-pipeline-operator%2Fdownload%2F%40babel%2Fplugin-proposal-pipeline-operator-7.7.4.tgz#d61724b4f207b0a7c08e9182e8e36fda2d93e384"
+  integrity sha1-1hcktPIHsKfAjpGC6ONv2i2T44Q=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/plugin-syntax-pipeline-operator" "^7.7.4"
+
 "@babel/plugin-proposal-unicode-property-regex@^7.7.4":
   version "7.7.4"
   resolved "https://registry.npm.taobao.org/@babel/plugin-proposal-unicode-property-regex/download/@babel/plugin-proposal-unicode-property-regex-7.7.4.tgz#7c239ccaf09470dbe1d453d50057460e84517ebb"
@@ -322,6 +330,13 @@
   version "7.7.4"
   resolved "https://registry.npm.taobao.org/@babel/plugin-syntax-optional-catch-binding/download/@babel/plugin-syntax-optional-catch-binding-7.7.4.tgz#a3e38f59f4b6233867b4a92dcb0ee05b2c334aa6"
   integrity sha1-o+OPWfS2IzhntKktyw7gWywzSqY=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
+
+"@babel/plugin-syntax-pipeline-operator@^7.7.4":
+  version "7.7.4"
+  resolved "https://registry.npm.taobao.org/@babel/plugin-syntax-pipeline-operator/download/@babel/plugin-syntax-pipeline-operator-7.7.4.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fplugin-syntax-pipeline-operator%2Fdownload%2F%40babel%2Fplugin-syntax-pipeline-operator-7.7.4.tgz#8bfe2648196829f1c442ae7087f2ad92083415f8"
+  integrity sha1-i/4mSBloKfHEQq5wh/Ktkgg0Ffg=
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
 
