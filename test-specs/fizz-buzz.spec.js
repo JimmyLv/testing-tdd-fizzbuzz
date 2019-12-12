@@ -47,11 +47,14 @@ expect.extend({
 
 describe("Tests for FizzBuzz specs", () => {
   const divideBy = divisor => number => number % divisor === 0;
+  const contains = target => number => number.toString().includes(target);
   const isInScope = number => isNumber(number) && number >= 1 && number <= 100;
   const isNotInScope = number =>
     isNumber(number) && (number < 1 || number > 100);
   const isDivisibleBy3 = number => divideBy(3)(number);
   const isDivisibleBy5 = number => divideBy(5)(number);
+  const isContains3 = number => contains(3)(number);
+  const isContains5 = number => contains(5)(number);
   const isEmptyInput = number => ["", null, undefined].includes(number);
   const isNumber = number => typeof number === "number";
   const isNotNumber = number => !isNumber(number);
@@ -77,6 +80,20 @@ describe("Tests for FizzBuzz specs", () => {
     expect(fizzBuzz.mock.calls).toHaveBeenCalledWithSome(
       number =>
         isInScope(number) && isDivisibleBy3(number) && isDivisibleBy5(number)
+    );
+    expect(fizzBuzz.mock.calls).toHaveBeenCalledWithSome(
+      number =>
+        isInScope(number) &&
+        !isDivisibleBy3(number) &&
+        !isDivisibleBy5(number) &&
+        isContains3(number)
+    );
+    expect(fizzBuzz.mock.calls).toHaveBeenCalledWithSome(
+      number =>
+        isInScope(number) &&
+        !isDivisibleBy3(number) &&
+        !isDivisibleBy5(number) &&
+        isContains5(number)
     );
   });
 
