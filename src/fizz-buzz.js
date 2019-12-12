@@ -1,3 +1,6 @@
 export function fizzBuzz(number) {
-  return '2';
+  if (number % 3 === 0) {
+    return "Fizz";
+  }
+  return "2";
 }
