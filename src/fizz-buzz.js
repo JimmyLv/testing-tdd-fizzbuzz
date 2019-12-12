@@ -1,9 +1,22 @@
+
+function isAliquot(dividend) {
+  return number => number % dividend === 0;
+}
+
+function isNumber(number) {
+  return typeof number === "number";
+}
+
 const isAliquot3 = isAliquot(3);
 const isAliquot5 = isAliquot(5);
 
-export function fizzBuzz(number) {
-  if(isAliquot3(number) && isAliquot5(number)){
-    return 'fizzBuzz'
+export default function fizzBuzz(number) {
+  if (!isNumber(number)) {
+    throw new Error('number is type of number is not number');
+  }
+
+  if (isAliquot3(number) && isAliquot5(number)) {
+    return 'fizzBuzz';
   }
   if (isAliquot3(number)) {
     return 'fizz';
@@ -14,10 +27,4 @@ export function fizzBuzz(number) {
   }
 
   return number;
-}
-
-function isAliquot(dividend){
-  return (number)=>{
-    return number % dividend === 0; 
-  }
 }

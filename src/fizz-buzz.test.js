@@ -1,7 +1,7 @@
-import { fizzBuzz } from './fizz-buzz';
+import fizzBuzz from './fizz-buzz';
 
 function verifyHandler(number, expectResult) {
-  // give 
+  // give
   // number
 
   // when
@@ -32,6 +32,10 @@ describe('5 的倍数输出 buzz', () => {
 });
 
 describe('输入 3 和 5 的共同倍数输出 fizzBuzz', () => {
+  it('输入 0 ，应该也输出 fizzBuzz ', () => {
+    verifyHandler(0, 'fizzBuzz');
+  });
+
   it('输入 15 输出 fizzBuzz', () => {
     verifyHandler(15, 'fizzBuzz');
   });
@@ -48,5 +52,19 @@ describe('不能被 3 整除, 也不能被 5 整除，输出 输入的数字', (
 
   it('输入 2 ，应该也输出 2 ', () => {
     verifyHandler(2, 2);
+  });
+});
+
+describe('异常处理', () => {
+  it('如果输入的不是数字的话，抛出错误', () => {
+    expect(() => {
+      fizzBuzz('1');
+    }).toThrow();
+  });
+
+  it('如果输入为空的话，抛出错误', () => {
+    expect(() => {
+      fizzBuzz(null);
+    }).toThrow();
   });
 });
